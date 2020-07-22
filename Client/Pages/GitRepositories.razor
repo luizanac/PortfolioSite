@@ -1,0 +1,33 @@
+@page "/repositories"
+@using PortfolioSite.Shared.Dtos.Git
+@inject HttpClient Http
+
+<h1 class="white-strong">Repositories</h1>
+<BlazorAnimate.Animate>
+    <div class="card-container">
+        @foreach (var repo in _repos)
+        {
+            <div key="@repo.Id" class="card">
+                <div class="card-top">
+                    <h2><a class="white-strong" href="@repo.Url" target="_blank"><i class="fa fa-link fa-size-15" aria-hidden="true"></i> @repo.Name</a></h2>
+                    <h4 class="white-strong">@repo.Language</h4>
+                </div>
+                <div class="card-down">
+                    <h4 class="white-strong">@repo.Description</h4>
+                </div>
+            </div>
+        }
+    </div>
+</BlazorAnimate.Animate>
+
+
+@code {
+
+    private IList<GitHubRepo> _repos = new List<GitHubRepo>();
+
+    protected override async Task OnInitializedAsync(){
+        
+        _repos = await Http.GetFromJsonAsync<IList<GitHubRepo>>("https://api.github.com/users/luizanac/repos");
+        _repos = _repos.OrderByDescending(x => x.CreatedAt).ToList();
+    }
+}

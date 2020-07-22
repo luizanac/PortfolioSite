@@ -1,0 +1,48 @@
+@page "/"
+@layout BaseLayout
+@inject NavigationManager NavigationManager
+
+<div class="profile">
+    @* <div class="image"> *@
+    @*     <img src="images/profile.jpg" /> *@
+    @* </div> *@
+    <div class="detail">
+        <h1 id="home-name" class="white-strong">Luiz A. A. Zuchinali</h1>
+        <span class="white-strong">Web Developer</span>
+    </div>
+</div>
+
+@code {
+    private void NavigateToComponent(string component){
+        NavigationManager.NavigateTo(component);
+    }
+}
+
+
+<style scoped>
+    #home-name {
+        font-size: 42px;
+    }
+
+    .profile {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile .image img {
+        width: 220px;
+        height: 220px;
+        border-radius: 100%;
+        margin-right: 20px;
+    }
+
+    .profile .detail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+</style>

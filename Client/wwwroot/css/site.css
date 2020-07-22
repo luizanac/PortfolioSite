@@ -1,0 +1,107 @@
+html {
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+
+    background: url(../images/background.jfif) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.white {
+    color: rgba(2555, 255, 255, 0.7);
+}
+
+.white-strong {
+    color: rgba(2555, 255, 255, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#loading-screen {
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+
+    animation: fadeOut 1s linear 1 normal forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+ul {
+    padding-inline-start: 0;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    width: 900px;
+    max-height: 740px;
+    overflow-y: auto;        
+}
+
+.card-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-down {
+
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.01);
+    margin-top: 5px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.card-left {
+
+}
+
+.card-right {
+}
+
+.fa-size-15 {
+    font-size: 15px;
+    transform: translateY(-2px);
+}
+
+/* Oswald regular */
+
+@font-face {
+    font-family: "Oswald";
+    src: url("../fonts/Oswald-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+

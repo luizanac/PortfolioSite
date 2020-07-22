@@ -1,0 +1,48 @@
+@inherits LayoutComponentBase
+
+<Animate>
+    <div id="container">
+        <BaseHeader NavLinkButtons="@_navLinkButtons"/>
+            <div class="body-container">
+                @Body
+            </div>
+        
+        <div class="spacer"></div>
+        <BaseFooter />
+
+    </div>
+</Animate>
+
+@code {
+
+    private NavLinkButton[] _navLinkButtons = new NavLinkButton[]{
+        new NavLinkButton("/", "Home"),
+        new NavLinkButton("about", "About"),
+        new NavLinkButton("samples", "App Samples"),
+        new NavLinkButton("packages", "Packages"),
+        new NavLinkButton("repositories", "Git Repositories"),
+        new NavLinkButton("contact", "Contact"),
+    };
+}
+
+<style>
+    #container {
+        margin: 0;
+        display: flex;
+        min-height: 98vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .body-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .spacer {
+        flex: 1; 
+    }
+</style>

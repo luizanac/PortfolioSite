@@ -1,0 +1,61 @@
+@page "/about"
+@layout BaseLayout
+
+<h1 class="white-strong">About</h1>
+<BlazorAnimate.Animate>
+    <div class="card-container">
+        <div class="card">
+            <div id="profile-card-container">
+                <div class="card-left">
+                    <img id="profile-image" src="images/profile.jpg" alt="Foto de perfil do criador do site"/>
+                </div>
+                <div class="card-right">
+                    <div class="card-top">
+                        <h4 class="white-strong">&emsp;&emsp;&emsp;Hello, my name is Luiz Antonio Anacleto Zuchinali :)</h4><br>
+                        <h4 class="white-strong">
+                            &emsp;&emsp;&emsp;I started working in the development area at the beginning of 2017 while studying the faculty of analysis
+                            and systems development, practically throughout my career I worked as a back-end developer with microsoft technologies.
+                        </h4><br>
+                        <h4 class="white-strong">
+                            &emsp;&emsp;&emsp;In my spare time, I like to study new technologies
+                            and reinforce technologies in which I already know, play video games, surf and skate.
+                        </h4>
+                    </div>
+                    <div class="card-down">
+                        <h4 class="white-strong"></h4>
+                        <h5 class="white-strong"></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</BlazorAnimate.Animate>
+
+<style>
+    #profile-image {
+        max-width: 250px;
+        border-radius: 100%;
+    }
+    .card-right {
+        width: 100%;
+        display: flex;
+    }
+
+    .card-top {
+        justify-content: center !important;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #profile-card-container {
+        display: flex;
+        flex-direction: row;
+    }
+</style>
+
+<style media="screen and (min-width: 920px)">
+    .card-right {
+        padding-left: 20px;
+    }
+</style>

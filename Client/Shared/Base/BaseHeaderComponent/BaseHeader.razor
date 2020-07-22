@@ -1,0 +1,128 @@
+<div class="header-container">
+    @* <div>
+        <NavLink href="/">
+            <h1 id="app-title" class="white">L</h1>
+        </NavLink>
+    </div> *@
+    <nav>
+        <ul class="nav">
+           @foreach (var navLinkButton in NavLinkButtons)
+           {
+            <li class="nav-item">
+                <NavLink class="nav-link" href="@navLinkButton.Route" Match="@GetLinkMatchType(navLinkButton)">
+                    @navLinkButton.RouteName
+                </NavLink>
+            </li>
+           }
+        </ul>
+    </nav>
+
+</div>
+
+@if(_menuState.Equals(EMenuState.Hide)){
+    <i @onclick="@OpenMenu" id="menu-button" class="fa fa-bars fa-2x white-strong" aria-hidden="true"></i>
+}else if(_menuState.Equals(EMenuState.Show)){
+    <div id="mobile-menu">
+        <i @onclick="@CloseMenu" id="menu-button" class="fa fa-bars fa-2x white-strong" aria-hidden="true"></i>
+
+        <nav>
+            <ul class="nav-mobile">
+            @foreach (var navLinkButton in NavLinkButtons)
+            {
+                <li class="nav-item-mobile">
+                    <NavLink class="nav-link-mobile" href="@navLinkButton.Route" Match="@GetLinkMatchType(navLinkButton)">
+                        @navLinkButton.RouteName
+                    </NavLink>
+                </li>
+            }
+            </ul>
+        </nav>
+    </div>
+}
+
+
+
+
+@code {
+    [Parameter]
+    public NavLinkButton[] NavLinkButtons { get; set; }
+
+    private EMenuState _menuState { get; set; } = EMenuState.Hide;
+
+    private NavLinkMatch GetLinkMatchType(NavLinkButton navLinkButton){
+        return navLinkButton.Route.Equals("/") ? NavLinkMatch.All : NavLinkMatch.Prefix;
+    }
+
+    private void OpenMenu(){
+        _menuState = EMenuState.Show;
+    }
+
+    private void CloseMenu(){
+        _menuState = EMenuState.Hide;
+    }
+
+    enum EMenuState {
+        Show,
+        Hide
+    }
+}
+
+<style>
+    #app-title {
+        margin-left: 15px;
+    }
+
+    .header-container {
+        margin: 20px;
+    }
+
+    .nav {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav-item {
+    }
+
+    .nav-link {
+        border-radius: 5px;
+        text-decoration: none;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .nav-link:hover, .nav-link.active {
+        color: rgba(255, 255, 255, 1);
+    }
+
+    #menu-button {
+        display: none;
+    }
+</style>
+
+<style scoped media="screen and (max-width: 768px)">
+    .nav {
+        display: none;
+    }
+
+    #menu-button {
+        display: block;
+        cursor: pointer;
+        margin-left: 20px;
+        align-self: flex-start;
+    }
+
+    #mobile-menu {
+        height: 100vh;
+        width: 70vw;
+        z-index: 3;
+        background-color: rgba(0, 0, 0, 0.7);
+        align-self: flex-start;
+        position: absolute;
+    }
+</style>
+

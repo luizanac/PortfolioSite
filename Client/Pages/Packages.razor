@@ -1,0 +1,44 @@
+@page "/packages"
+@using PortfolioSite.Shared.Dtos.Package
+
+<h1 class="white-strong">Packages</h1>
+
+<BlazorAnimate.Animate>
+    <div class="card-container">
+        @foreach (var package in packages)
+        {
+            <div key="@package.Name" class="card">
+                <div class="card-top">
+                    <div style="display: flex; flex-direction: row; align-items: baseline;">
+                        <h2><a class="white-strong" href="@package.Url" target="_blank"><i class="fa fa-link fa-size-15" aria-hidden="true"></i> @package.Name</a></h2><legend id="version" class="white-strong">@package.Version</legend>
+                    </div>
+                    <h4 class="white-strong">@package.Language</h4>
+                </div>
+                <div class="card-down">
+                    <h4 class="white-strong">@package.Description</h4>
+                    <h5 class="white-strong">.NET CLI: @package.CommandToInstall @package.Version</h5>
+                </div>
+            </div>
+        }
+    </div>
+</BlazorAnimate.Animate>
+
+
+@code {
+    private PackageDto[] packages = new PackageDto[]{
+        new PackageDto(
+            "Luizanac.Utils", 
+            "Pagination and filter helper", 
+            "https://www.nuget.org/packages/Luizanac.Utils/",
+            "C#",
+            "1.0.1",
+            "dotnet add package Luizanac.Utils --version ")
+    };
+}
+
+<style scoped>
+    #version {
+        font-size: 12px;
+        margin-left: 8px;
+    }
+</style>
