@@ -19,9 +19,9 @@
 
 </div>
 
-@if(_menuState.Equals(EMenuState.Hide)){
+@if(MenuState.Equals(EMenuState.Hide)){
     <i @onclick="@OpenMenu" id="menu-button" class="fa fa-bars fa-2x white-strong" aria-hidden="true"></i>
-}else if(_menuState.Equals(EMenuState.Show)){
+}else if(MenuState.Equals(EMenuState.Show)){
     <div id="mobile-menu">
         <i @onclick="@CloseMenu" id="menu-button" class="fa fa-bars fa-2x white-strong" aria-hidden="true"></i>
 
@@ -47,18 +47,18 @@
     [Parameter]
     public NavLinkButton[] NavLinkButtons { get; set; }
 
-    private EMenuState _menuState { get; set; } = EMenuState.Hide;
+    private EMenuState MenuState { get; set; } = EMenuState.Hide;
 
     private NavLinkMatch GetLinkMatchType(NavLinkButton navLinkButton){
         return navLinkButton.Route.Equals("/") ? NavLinkMatch.All : NavLinkMatch.Prefix;
     }
 
     private void OpenMenu(){
-        _menuState = EMenuState.Show;
+        MenuState = EMenuState.Show;
     }
 
     private void CloseMenu(){
-        _menuState = EMenuState.Hide;
+        MenuState = EMenuState.Hide;
     }
 
     enum EMenuState {
